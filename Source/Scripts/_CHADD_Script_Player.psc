@@ -4,6 +4,8 @@ Actor Property PlayerRef Auto
 
 _CHADD_Script_Quest Script_Quest
 
+
+
 Event OnInit()
     ; Debug.Notification("_CHADD: Script_Player.OnInit()")
 
@@ -13,4 +15,17 @@ Event OnInit()
         Debug.Notification("_CHADD: Quest Manager Found")
     endif
 
+    RegisterForSingleUpdate(10.0)
+
 endEvent
+
+Event OnUpdate()
+
+    ActorValueInfo oneHanded = ActorValueInfo.GetActorValueInfoByName("OneHanded")
+    ; Float skillUseMulti = oneHanded.GetSkillUseMult()
+    Float skillExperience = oneHanded.GetSkillExperience()
+
+    Debug.Notification("_CHADD: oneHanded.skillExperience: " + skillExperience)
+
+    RegisterForSingleUpdate(10.0)
+EndEvent
